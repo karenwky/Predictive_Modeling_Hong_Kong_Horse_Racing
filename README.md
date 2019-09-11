@@ -23,8 +23,9 @@ venue - a 2-character string, representing which of the 2 race courses this race
 config - race track configuration, mostly related to the position of the inside rail. For more details, see the HKJC website.<br/>
 going - track condition. For more details, see the HKJC website.<br/>
 
-### Data Pre-processing
-
+### Data Preprocessing
+![Labels](/images/labels.png)<br/>
+As the data is extremely skewed, resampling library [`imblearn`](https://imbalanced-learn.readthedocs.io/en/stable/index.html) is used. Under-sampling method RandomUnderSampler and over-sampling method SMOTE are used for different model experiments. 
 
 ### Modeling
 1. KNeighborsClassifier (kNN Classifier)
