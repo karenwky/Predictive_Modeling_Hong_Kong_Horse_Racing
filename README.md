@@ -23,8 +23,17 @@ venue - a 2-character string, representing which of the 2 race courses this race
 config - race track configuration, mostly related to the position of the inside rail. For more details, see the HKJC website.<br/>
 going - track condition. For more details, see the HKJC website.<br/>
 
+### Data Pre-processing
+
+
 ### Modeling
 1. KNeighborsClassifier (kNN Classifier)
 2. LightGBM
 
+### Training
+
 ### Predictions
+With data for one of the races in the dataset (which is excluded in training the models), predict the winning horse. 
+
+### Acknowledgement
+LightGBM code reference from Medium [article](https://medium.com/@pushkarmandot/https-medium-com-pushkarmandot-what-is-lightgbm-how-to-implement-it-how-to-fine-tune-the-parameters-60347819b7fc) by Pushkar Mandot. 
