@@ -25,13 +25,17 @@ going - track condition. For more details, see the HKJC website.<br/>
 
 ### Data Preprocessing
 ![Labels](/images/labels.png)<br/>
-As the data is extremely skewed, resampling library [`imblearn`](https://imbalanced-learn.readthedocs.io/en/stable/index.html) is used. Under-sampling method RandomUnderSampler and over-sampling method SMOTE are used for different model experiments. 
+As the data is extremely skewed, resampling library [`imblearn`](https://imbalanced-learn.readthedocs.io/en/stable/index.html) is used. Under-sampling method RandomUnderSampler (RUS) and over-sampling method Synthetic Minority Over-sampling Technique (SMOTE) are used for different model experiments. 
 
 ### Modeling
 1. KNeighborsClassifier (kNN Classifier)
+   
+   For this dataset, the target is to minimize False Positive, which means `prediction: win, actual: lose`. So the metric is set to be precision score of the positive class (1), which is the win label. 
+
+
 2. LightGBM
 
-### Training
+### Training Summary
 
 ### Predictions
 With data for one of the races in the dataset (which is excluded in training the models), predict the winning horse. 
