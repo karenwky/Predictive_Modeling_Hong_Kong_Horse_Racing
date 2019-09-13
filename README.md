@@ -66,14 +66,23 @@ With data for one of the races in the dataset (which is excluded in training the
 
    For kNN models, only model trained with under-sampled data can predict the winning horse. However, there is one False Positive in the prediction. 
    
-   ```
-   
-   ```
+```
+"Classification Report of kNN Classifier model trained with under-sampled data"
+
+                 precision    recall  f1-score   support
+
+         0.0       1.00      0.92      0.96        13
+         1.0       0.50      1.00      0.67         1
+
+    accuracy                           0.93        14
+   macro avg       0.75      0.96      0.81        14
+weighted avg       0.96      0.93      0.94        14
+```
 
 ### Things to be Improved
-* Feature re-scaling was not performed for different range of numeric values. 
-* One-hot encoding was not performed and just keeping the numeric values for some categorical features such as `draw`. 
-* The volume of test data is small, more data can be used to do testing experiment. 
+* Feature scaling was not performed for different range of numeric values. 
+* One-hot encoding was not performed and just keeping the numeric values for some categorical features such as `draw` and `race_class`. 
+* The volume of test data is small, so the highly-accurate prediction result is more of luckiness. More data can be used to do the testing experiment. 
 
 ### Acknowledgement
 LightGBM code reference from Medium [article](https://medium.com/@pushkarmandot/https-medium-com-pushkarmandot-what-is-lightgbm-how-to-implement-it-how-to-fine-tune-the-parameters-60347819b7fc) by Pushkar Mandot. Thank you for sharing your experience! 
