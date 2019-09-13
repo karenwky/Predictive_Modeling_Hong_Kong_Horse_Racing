@@ -31,6 +31,8 @@ As the data is extremely skewed, resampling library [`imblearn`](https://imbalan
 1. KNeighborsClassifier (kNN Classifier)
    
    For this dataset, the target is to minimize False Positive, which means `prediction: win, actual: lose`. So the metric is set to be precision score of the positive class (1), which is the win label. Thus, find out the optimized k-value with for loops. 
+   
+   ![knn_ori](/images/knn_ori.png)![knn_rus](/images/knn_rus.png)![knn_sm](/images/knn_sm.png)
 
 2. LightGBM
    
@@ -43,8 +45,8 @@ As the data is extremely skewed, resampling library [`imblearn`](https://imbalan
 
 ### Training Summary
 
-|  |Size	Time (sec) | Precision (0) | Precision (1) | F1-score (0) | F1-score (1) | True Positive | False Positive|
-|---|----------------|---------------|---------------|--------------|--------------|---------------|---------------|
+|  |Size|	Time (sec) | Precision (0) | Precision (1) | F1-score (0) | F1-score (1) | True Positive | False Positive|
+|---|---|-------------|---------------|---------------|--------------|--------------|---------------|---------------|
 |**kNN_original_data**|49.1 MB	|3.23525|	0.92	|0.32	|0.96|	0.02|	13|28|
 |**kNN_rus**|	8 MB|	1.06418|	0.95|	0.15	|0.81	|0.24	|752|	4222|
 |**kNN_smote**|	90.6 MB|	6.65747|	0.93|	0.15|	0.90|	0.20	|328	|1808|
@@ -52,10 +54,17 @@ As the data is extremely skewed, resampling library [`imblearn`](https://imbalan
 |**lgb_rus**|	130 KB|	0.19044|	0.94|	0.30|	0.93	|0.32|	429	|1020|
 |**lgb_smote**|823 KB|	1.98941	|0.93	|0.36|	0.95|	0.15|	113	|204|
 
-
+* By processing a lot of data, kNN model with over-sampling took the longest time, while LightGBM model with under-sampling took the shortest time. 
+* kNN models performed relatively worse with low precision score and f1-score. 
+* Training models aimed at minimize False Positive (predict: win, actual: lose), but it seems True Positive and False Positive are correlated. Same as gambling and investment, you have the chance to win and the risk to lose at the same time.
+* File sizes of LightGBM models are incredibly small and the time spent on training models is really quick. 
 
 ### Predictions
 With data for one of the races in the dataset (which is excluded in training the models), predict the winning horse. 
 
+### Things to be Improved
+* Feature re-scaling was not performed for different range of numeric values. 
+* One-hot encoding was not performed and just keeping the numeric values for some categorical features such as `draw`. 
+
 ### Acknowledgement
-LightGBM code reference from Medium [article](https://medium.com/@pushkarmandot/https-medium-com-pushkarmandot-what-is-lightgbm-how-to-implement-it-how-to-fine-tune-the-parameters-60347819b7fc) by Pushkar Mandot. 
+LightGBM code reference from Medium [article](https://medium.com/@pushkarmandot/https-medium-com-pushkarmandot-what-is-lightgbm-how-to-implement-it-how-to-fine-tune-the-parameters-60347819b7fc) by Pushkar Mandot. Thank you for sharing your experience! 
