@@ -62,9 +62,18 @@ As the data is extremely skewed, resampling library [`imblearn`](https://imbalan
 ### Predictions
 With data for one of the races in the dataset (which is excluded in training the models), predict the winning horse. 
 
+1. KNeighborsClassifier (kNN Classifier)
+
+   For kNN models, only model trained with under-sampled data can predict the winning horse. However, there is one False Positive in the prediction. 
+   
+   ```
+   
+   ```
+
 ### Things to be Improved
 * Feature re-scaling was not performed for different range of numeric values. 
 * One-hot encoding was not performed and just keeping the numeric values for some categorical features such as `draw`. 
+* The volume of test data is small, more data can be used to do testing experiment. 
 
 ### Acknowledgement
 LightGBM code reference from Medium [article](https://medium.com/@pushkarmandot/https-medium-com-pushkarmandot-what-is-lightgbm-how-to-implement-it-how-to-fine-tune-the-parameters-60347819b7fc) by Pushkar Mandot. Thank you for sharing your experience! 
