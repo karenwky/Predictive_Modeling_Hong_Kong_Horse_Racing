@@ -43,14 +43,16 @@ As the data is extremely skewed, resampling library [`imblearn`](https://imbalan
 
 ### Training Summary
 
-|   |Size	Time (sec) | Precision (0) | Precision (1) | F1-score (0) | F1-score (1) | True Positive | False Positive|
+|  |Size	Time (sec) | Precision (0) | Precision (1) | F1-score (0) | F1-score (1) | True Positive | False Positive|
 |---|----------------|---------------|---------------|--------------|--------------|---------------|---------------|
-| kNN_original_data	|49.1 MB	|3.23525|	0.92	|0.32	|0.96|	0.02|	13|28|
-|kNN_rus	8 MB	1.06418	0.95	0.15	0.81	0.24	752	4222
-|kNN_sm	90.6 MB	6.65747	0.93	0.15	0.90	0.20	328	1808
-|lgb_original_data	729 KB	1.32079	0.95	0.28	0.93	0.33	493	1287
-|lgb_rus	130 KB	0.19044	0.94	0.30	0.93	0.32	429	1020
-|lgb_sm	823 KB	1.98941	0.93	0.36	0.95	0.15	113	204
+|**kNN_original_data**|49.1 MB	|3.23525|	0.92	|0.32	|0.96|	0.02|	13|28|
+|**kNN_rus**|	8 MB|	1.06418|	0.95|	0.15	|0.81	|0.24	|752|	4222|
+|**kNN_smote**|	90.6 MB|	6.65747|	0.93|	0.15|	0.90|	0.20	|328	|1808|
+|**lgb_original_data**|	729 KB|	1.32079|	0.95|	0.28|	0.93|	0.33|	493	|1287|
+|**lgb_rus**|	130 KB|	0.19044|	0.94|	0.30|	0.93	|0.32|	429	|1020|
+|**lgb_smote**|823 KB|	1.98941	|0.93	|0.36|	0.95|	0.15|	113	|204|
+
+
 
 ### Predictions
 With data for one of the races in the dataset (which is excluded in training the models), predict the winning horse. 
