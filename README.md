@@ -1,10 +1,10 @@
 # Predictive Modeling: Hong Kong Horse Racing
 With supervised machine learning models, predict the winning horse with data of various features. 
 
-### Data Source
+## Data Source
 Data from [Kaggle](https://www.kaggle.com/gdaley/hkracing) user Graham Daley, containing two sets of data about horse information and race information. 
 
-### Features Explanation
+## Features Explanation
 > won - whether horse won (1) or otherwise (0)<br/>
 horse_age - current age of this horse at the time of the race<br/>
 horse_rating - rating number assigned by HKJC to this horse at the time of the race<br/>
@@ -21,13 +21,13 @@ horse_country - country of origin of this horse<br/>
 horse_type - sex of the horse, e.g. 'Gelding', 'Mare', 'Horse', 'Rig', 'Colt', 'Filly'<br/>
 venue - a 2-character string, representing which of the 2 race courses this race took place at: ST = Shatin, HV = Happy Valley<br/>
 config - race track configuration, mostly related to the position of the inside rail. For more details, see the HKJC website.<br/>
-going - track condition. For more details, see the HKJC website.<br/>
+going - track condition. For more details, see the HKJC website.
 
-### Data Preprocessing
+## Data Preprocessing
 ![Labels](/images/labels.png)<br/>
 As the data is extremely skewed, resampling library [`imblearn`](https://imbalanced-learn.readthedocs.io/en/stable/index.html) is used. Under-sampling method RandomUnderSampler (RUS) and over-sampling method Synthetic Minority Over-sampling Technique (SMOTE) are used for different model experiments. 
 
-### Modeling
+## Modeling
 1. KNeighborsClassifier (kNN Classifier)
    
    For this dataset, the target is to minimize False Positive, which means `prediction: win, actual: lose`. So the metric is set to be precision score of the positive class (1), which is the win label. Thus, find out the optimized k-value with for loops. 
@@ -43,7 +43,7 @@ As the data is extremely skewed, resampling library [`imblearn`](https://imbalan
    <img src="/images/lightgbm_smote.png" alt="top10_smote" width=400><br/>
    Top 10 important features are shown, win odds and place odds are particularly ranked highly for all of the models. 
 
-### Training Summary
+## Training Summary
 
 |  |Size|	Time (sec) | Precision (0) | Precision (1) | F1-score (0) | F1-score (1) | True Positive | False Positive|
 |---|---|-------------|---------------|---------------|--------------|--------------|---------------|---------------|
@@ -59,30 +59,58 @@ As the data is extremely skewed, resampling library [`imblearn`](https://imbalan
 * Training models aimed at minimize False Positive (predict: win, actual: lose), but it seems True Positive and False Positive are correlated. Same as gambling and investment, you have the chance to win and the risk to lose at the same time.
 * File sizes of LightGBM models are incredibly small and the time spent on training models is really quick. 
 
-### Predictions
+## Predictions
 With data for one of the races in the dataset (which is excluded in training the models), predict the winning horse. 
 
 1. KNeighborsClassifier (kNN Classifier)
 
    For kNN models, only model trained with under-sampled data can predict the winning horse. However, there is one False Positive in the prediction. 
    
-```
-"Classification Report of kNN Classifier model trained with under-sampled data"
+   ```
+   "Classification Report of kNN Classifier model trained with under-sampled data"
 
-                 precision    recall  f1-score   support
+                    precision    recall  f1-score   support
 
-         0.0       1.00      0.92      0.96        13
-         1.0       0.50      1.00      0.67         1
+            0.0       1.00      0.92      0.96        13
+            1.0       0.50      1.00      0.67         1
 
-    accuracy                           0.93        14
-   macro avg       0.75      0.96      0.81        14
-weighted avg       0.96      0.93      0.94        14
-```
+       accuracy                           0.93        14
+      macro avg       0.75      0.96      0.81        14
+   weighted avg       0.96      0.93      0.94        14
+   ```
+   ![knn_rus_cm](/images/knn_rus_cm.png)
 
-### Things to be Improved
+2. LightGBM
+
+   With setting the threshold value same as the models trained, all LightGBM models achieved 100% accuracy. 
+   ```
+   "Classification Report of all LightGBM models"
+
+                    precision    recall  f1-score   support
+
+            0.0       1.00      1.00      1.00        13
+            1.0       1.00      1.00      1.00         1
+
+       accuracy                           1.00        14
+      macro avg       1.00      1.00      1.00        14
+   weighted avg       1.00      1.00      1.00        14
+   ```
+   ![knn_lgb](/images/knn_lgb.png)
+
+## Things to be Improved
 * Feature scaling was not performed for different range of numeric values. 
 * One-hot encoding was not performed and just keeping the numeric values for some categorical features such as `draw` and `race_class`. 
 * The volume of test data is small, so the highly-accurate prediction result is more of luckiness. More data can be used to do the testing experiment. 
 
-### Acknowledgement
-LightGBM code reference from Medium [article](https://medium.com/@pushkarmandot/https-medium-com-pushkarmandot-what-is-lightgbm-how-to-implement-it-how-to-fine-tune-the-parameters-60347819b7fc) by Pushkar Mandot. Thank you for sharing your experience! 
+## Detailed Presentation
+* Check out complete code and workflow with [Jupyter Notebook](). 
+
+## Skills Acquired
+* Predictive models --- supervised learning
+* Scikit-learn
+
+## Acknowledgement
+* kNN Classifier code reference from <br/>
+* LightGBM code reference from Medium [article](https://medium.com/@pushkarmandot/https-medium-com-pushkarmandot-what-is-lightgbm-how-to-implement-it-how-to-fine-tune-the-parameters-60347819b7fc) by Pushkar Mandot. <br/>
+* Confusion matrix plot code reference from [Stack Overflow](https://stackoverflow.com/questions/20998083/show-the-values-in-the-grid-using-matplotlib) user Joe Kington. <br/>
+* Thank you coders for sharing your experience! =]
