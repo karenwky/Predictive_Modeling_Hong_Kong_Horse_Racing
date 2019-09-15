@@ -98,16 +98,18 @@ With data for one of the races in the dataset (which is excluded in training the
    ![knn_lgb](/images/knn_lgb.png)
 
 ## Things to be Improved
+* Correlation between features is ignored. 
 * Feature scaling was not performed for different range of numeric values. 
 * One-hot encoding was not performed and just keeping the numeric values for some categorical features such as `draw` and `race_class`. 
 * The volume of test data is small, so the highly-accurate prediction result is more of luckiness. More data can be used to do the testing experiment. 
 
 ## Detailed Presentation
-* Check out complete code and workflow with [Jupyter Notebook](). 
+* Check out complete workflow with [Jupyter Notebook Slides](./code/slides).
+* Check out complete code with [Jupyter Notebook](./code). 
 
 ## Skills Acquired
-* Pandas
-* Scikit-learn: supervised learning
+* Pandas: e.g. data cleaning and data imputation, one-hot encoding for categorical features
+* Scikit-learn: e.g. supervised learning, fine-tuning hyperparameters of the training models
 
 ## Acknowledgement
 LightGBM code reference from Medium [article](https://medium.com/@pushkarmandot/https-medium-com-pushkarmandot-what-is-lightgbm-how-to-implement-it-how-to-fine-tune-the-parameters-60347819b7fc) by Pushkar Mandot, and confusion matrix plot code reference from [Stack Overflow](https://stackoverflow.com/questions/20998083/show-the-values-in-the-grid-using-matplotlib) user Joe Kington. Thank you coders for sharing your experience! =]
