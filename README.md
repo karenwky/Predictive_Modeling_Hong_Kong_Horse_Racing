@@ -54,8 +54,8 @@ As the data is extremely skewed, resampling library [`imblearn`](https://imbalan
 |**lgb_rus**|	130 KB|	0.19044|	0.94|	0.30|	0.93	|0.32|	429	|1020|
 |**lgb_smote**|823 KB|	1.98941	|0.93	|0.36|	0.95|	0.15|	113	|204|
 
-* By processing a lot of data, kNN model with over-sampling took the longest time, while LightGBM model with under-sampling took the shortest time. 
-* kNN models performed relatively worse with low precision score and f1-score. 
+* By processing a lot of data, kNN model trained with over-sampled data took the longest time, while LightGBM model trained with under-sampled data took the shortest time. 
+* kNN models performed relatively worse with low precision score and f1-score of the positive class (1). 
 * Training models aimed at minimize False Positive (predict: win, actual: lose), but it seems True Positive and False Positive are correlated. Same as gambling and investment, you have the chance to win and the risk to lose at the same time.
 * File sizes of LightGBM models are incredibly small and the time spent on training models is really quick. 
 
@@ -69,7 +69,7 @@ With data for one of the races in the dataset (which is excluded in training the
    ```
    "Classification Report of kNN Classifier model trained with under-sampled data"
 
-                    precision    recall  f1-score   support
+                    precision  recall   f1-score   support
 
             0.0       1.00      0.92      0.96        13
             1.0       0.50      1.00      0.67         1
@@ -86,7 +86,7 @@ With data for one of the races in the dataset (which is excluded in training the
    ```
    "Classification Report of all LightGBM models"
 
-                    precision    recall  f1-score   support
+                    precision  recall   f1-score   support
 
             0.0       1.00      1.00      1.00        13
             1.0       1.00      1.00      1.00         1
@@ -106,11 +106,8 @@ With data for one of the races in the dataset (which is excluded in training the
 * Check out complete code and workflow with [Jupyter Notebook](). 
 
 ## Skills Acquired
-* Predictive models --- supervised learning
-* Scikit-learn
+* Pandas
+* Scikit-learn: supervised learning
 
 ## Acknowledgement
-* kNN Classifier code reference from <br/>
-* LightGBM code reference from Medium [article](https://medium.com/@pushkarmandot/https-medium-com-pushkarmandot-what-is-lightgbm-how-to-implement-it-how-to-fine-tune-the-parameters-60347819b7fc) by Pushkar Mandot. <br/>
-* Confusion matrix plot code reference from [Stack Overflow](https://stackoverflow.com/questions/20998083/show-the-values-in-the-grid-using-matplotlib) user Joe Kington. <br/>
-* Thank you coders for sharing your experience! =]
+LightGBM code reference from Medium [article](https://medium.com/@pushkarmandot/https-medium-com-pushkarmandot-what-is-lightgbm-how-to-implement-it-how-to-fine-tune-the-parameters-60347819b7fc) by Pushkar Mandot, and confusion matrix plot code reference from [Stack Overflow](https://stackoverflow.com/questions/20998083/show-the-values-in-the-grid-using-matplotlib) user Joe Kington. Thank you coders for sharing your experience! =]
