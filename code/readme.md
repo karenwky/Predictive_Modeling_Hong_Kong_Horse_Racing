@@ -1,4 +1,4 @@
 # Jupyter Notebooks
-* [combine_table](./code/combine_table.ipynb) - data cleaning and imputation
+* [combine_table](./combine_table.ipynb) - data cleaning and imputation
 * 
 * 
