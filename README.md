@@ -28,13 +28,13 @@ going - track condition. For more details, see the HKJC website.
 As the data is extremely skewed, resampling library [`imblearn`](https://imbalanced-learn.readthedocs.io/en/stable/index.html) is used. Under-sampling method RandomUnderSampler (RUS) and over-sampling method Synthetic Minority Over-sampling Technique (SMOTE) are used for different model experiments. 
 
 ## Modeling
-1. KNeighborsClassifier (kNN Classifier)
+<b>1. KNeighborsClassifier (kNN Classifier)</b>
    
    For this dataset, the target is to minimize False Positive, which means `prediction: win, actual: lose`. So the metric is set to be precision score of the positive class (1), which is the win label. Thus, find out the optimized k-value with for loops. 
    
    ![knn_ori](/images/knn_ori.png)![knn_rus](/images/knn_rus.png)![knn_sm](/images/knn_sm.png)
 
-2. LightGBM
+<b>2. LightGBM</b>
    
    Building a fast gradient boosting framework with adjusting the optimized threshold value to obtain the precision score of the positive class (1) as high as possible. 
    
@@ -62,7 +62,7 @@ As the data is extremely skewed, resampling library [`imblearn`](https://imbalan
 ## Predictions
 With data for one of the races in the dataset (which is excluded in training the models), predict the winning horse. 
 
-1. KNeighborsClassifier (kNN Classifier)
+<b>1. KNeighborsClassifier (kNN Classifier)</b>
 
    For kNN models, only model trained with under-sampled data can predict the winning horse. However, there is one False Positive in the prediction. 
    
@@ -80,7 +80,7 @@ With data for one of the races in the dataset (which is excluded in training the
    ```
    ![knn_rus_cm](/images/knn_rus_cm.png)
 
-2. LightGBM
+<b>2. LightGBM</b>
 
    With setting the threshold value same as the models trained, all LightGBM models achieved 100% accuracy. 
    ```
@@ -113,5 +113,5 @@ With data for one of the races in the dataset (which is excluded in training the
 * Scikit-learn: e.g. fine-tuning hyperparameters of the training models, setting metrics in evaluating models
 * Joblib: saving and loading models
 
-## Acknowledgement
+## Acknowledgements
 LightGBM code reference from Medium [article](https://medium.com/@pushkarmandot/https-medium-com-pushkarmandot-what-is-lightgbm-how-to-implement-it-how-to-fine-tune-the-parameters-60347819b7fc) by Pushkar Mandot, and confusion matrix plot code reference from [Stack Overflow](https://stackoverflow.com/questions/20998083/show-the-values-in-the-grid-using-matplotlib) user Joe Kington. Thank you coders for sharing your experience! =]
