@@ -38,8 +38,7 @@ As the data is extremely skewed, resampling library [`imblearn`](https://imbalan
    
    Building a fast gradient boosting framework with adjusting the optimized threshold value to obtain the precision score of the positive class (1) as high as possible. 
    
-   <img src="/images/lightgbm_ori.png" alt="top10_ori" width=400>
-   <img src="/images/lightgbm_rus.png" alt="top10_rus" width=400>
+   <img src="/images/lightgbm_ori.png" alt="top10_ori" width=400><img src="/images/lightgbm_rus.png" alt="top10_rus" width=400>
    <img src="/images/lightgbm_smote.png" alt="top10_smote" width=400><br/>
    Top 10 important features are shown, win odds and place odds are particularly ranked highly for all of the models. 
 
