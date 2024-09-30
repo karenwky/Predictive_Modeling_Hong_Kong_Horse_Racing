@@ -110,7 +110,7 @@ With data for one of the races in the dataset (which is excluded in training the
 ## Skills Acquired
 * Pandas: e.g. data cleaning and data imputation, one-hot encoding for categorical features
 * Scikit-learn: e.g. fine-tuning hyperparameters of the training models, setting metrics in evaluating models
-* Joblib: saving and loading models
+* Joblib: saving and loading trained machine learning models
 
 ## Acknowledgements
 LightGBM code reference from Medium [article](https://medium.com/@pushkarmandot/https-medium-com-pushkarmandot-what-is-lightgbm-how-to-implement-it-how-to-fine-tune-the-parameters-60347819b7fc) by Pushkar Mandot, and confusion matrix plot code reference from [Stack Overflow](https://stackoverflow.com/questions/20998083/show-the-values-in-the-grid-using-matplotlib) user Joe Kington. Thank you coders for sharing your experience! =]
